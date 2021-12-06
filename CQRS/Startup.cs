@@ -3,6 +3,7 @@
 using CQRS.Extensions;
 using Data.DataAccessLayer;
 using Domain;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -69,6 +70,7 @@ namespace BigExercise
             });
 
             services.AddMediatR(typeof(Startup));
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
             services.ConfigureCustomDependencyInjection();
             services.ConfigureCors();
 

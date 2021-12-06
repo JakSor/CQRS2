@@ -62,7 +62,7 @@ namespace CQRS.Controllers
             var query = new DeleteProductCommand(id);
             var result = await _mediator.Send(query);
             return Ok(result);
-            //todo paginatie/filter
+        
         }
     }
 }

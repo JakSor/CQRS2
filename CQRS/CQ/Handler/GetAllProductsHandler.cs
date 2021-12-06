@@ -20,10 +20,12 @@ namespace CQRS.CQ.Handler
        
         public async Task<ProductListDTO> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var productListDTO = await _repo.GetProducts(request.Parameters);
+            var productsList = await _repo.GetProducts(request.Parameters);
             var result = new ProductListDTO();
-            foreach (var product in productListDTO)
+            foreach (var product in productsList)
             {
+                //To Do: List mappen ipv entity
+
                 result.ProductDTOs.Add(_mapper.Map<ProductDTO>(product));
             }
             return result;
